@@ -1,0 +1,36 @@
+# Dependencies
+backend/node_modules/
+node_modules/
+
+# Runtime files
+.runtime/
+
+# Database files (use volume instead)
+backend/db/chainbattery.db
+backend/db/chainbattery.db-wal
+backend/db/chainbattery.db-shm
+*.db
+*.db-wal
+*.db-shm
+
+# Git
+.git/
+.gitignore
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temp
+*.tmp
+*.temp

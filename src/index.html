@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>链池溯源 - 新能源汽车动力电池全生命周期可信溯源平台</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js" defer></script>
+</head>
+<body>
+<div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24"><path d="M17 4h-3V2h-4v2H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2zm-6 14l-4-4h3v-3h2v3h3l-4 4z"/></svg>
+            </div>
+            <div class="logo-text">
+                链池溯源
+                <span>动力电池可信溯源平台</span>
+            </div>
+        </div>
+        <div class="sidebar-nav">
+            <div class="nav-section-label">核心功能</div>
+            <div class="nav-item active" data-page="dashboard">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+                首页数据大屏
+            </div>
+            <div class="nav-item" data-page="register">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+                电池注册
+            </div>
+            <div class="nav-item" data-page="detail">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+                电池详情
+            </div>
+            <div class="nav-item" data-page="search">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+                高级搜索
+            </div>
+            <div class="nav-item" data-page="trace">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M14 7h7M3 17h7M10 6l4 4M10 18l4-4"/></svg></span>
+                扫码溯源
+            </div>
+            <div class="nav-section-label">运营管理</div>
+            <div class="nav-item" data-page="maintenance">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></span>
+                维护管理
+            </div>
+            <div class="nav-item" data-page="recycle">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg></span>
+                回收管理
+            </div>
+            <div class="nav-item" data-page="carbon">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 2a9 9 0 100 18 9 9 0 000-18zm0 4a5 5 0 110 10 5 5 0 010-10z"/><path d="M12 6v6l4 2"/></svg></span>
+                碳减排大屏
+            </div>
+            <div class="nav-item" data-page="compare">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span>
+                电池对比
+            </div>
+            <div class="nav-item" data-page="cascade">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1"/></svg></span>
+                梯次利用
+            </div>
+            <div class="nav-item" data-page="certificates">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 14l2 2 4-4"/></svg></span>
+                证书管理
+            </div>
+            <div class="nav-section-label">监管与系统</div>
+            <div class="nav-item" data-page="alerts">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/><circle cx="12" cy="12" r="3"/></svg></span>
+                预警中心
+            </div>
+            <div class="nav-item" data-page="regulate">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+                监管大屏
+            </div>
+            <div class="nav-item" data-page="reports">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
+                报告中心
+            </div>
+            <div class="nav-item" data-page="audit">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 11H5a2 2 0 00-2 2v7a2 2 0 002 2h14a2 2 0 002-2v-7a2 2 0 00-2-2h-4"/><rect x="9" y="2" width="6" height="8" rx="1"/></svg></span>
+                审计日志
+            </div>
+            <div class="nav-item" data-page="import">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></span>
+                数据导入
+            </div>
+            <div class="nav-item" data-page="contracts">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+                智能合约
+            </div>
+        </div>
+        <div class="sidebar-footer">
+            <div class="user-section" id="userSection">
+                <button class="btn btn-primary" onclick="App.showAuthModal('login')" style="width:100%">登录 / 注册</button>
+            </div>
+            <div class="chain-status">
+                <div class="chain-dot"></div>
+                <span>链已连接</span>
+            </div>
+            <div class="network-info" id="networkInfo">Hardhat Local / Block #18923460</div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Pages rendered dynamically -->
+    </main>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modalContent"></div>
+</div>
+
+<script src="js/api.js" defer></script>
+<script src="js/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "chainbattery-backend",
+  "version": "1.0.0",
+  "description": "链池溯源后端服务 - Express + SQLite",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "init-db": "node db/init.js",
+    "seed": "node db/seed.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^9.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "qrcode": "^1.5.4"
+  }
+}
