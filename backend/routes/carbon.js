@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db/conn');
+const { adminRequired } = require('./auth');
 
 function generateTxHash() {
     var hash = '0x';
@@ -71,7 +72,7 @@ router.get('/stats', (req, res) => {
 });
 
 // POST /api/carbon - 添加碳减排记录
-router.post('/', (req, res) => {
+router.post('/', adminRequired, (req, res) => {
     const { id, battery_id, record_type, description, carbon_saved, unit, verifier, record_date, operator } = req.body;
 
     if (!id || !battery_id || !record_type || !description || !carbon_saved || !record_date) {
