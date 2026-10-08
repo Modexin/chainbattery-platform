@@ -255,15 +255,27 @@ function initDatabase() {
         CREATE INDEX IF NOT EXISTS idx_notifications_read ON notifications(read_status);
     `);
 
-    // Initialize admin account
-    const adminExists = db.prepare('SELECT id FROM users WHERE username = ?').get('admin');
-    if (!adminExists) {
-        db.prepare(`
-            INSERT INTO users (username, password, role, email, created_at)
-            VALUES (?, ?, 'admin', 'admin@chainbattery.local', datetime('now','localtime'))
-        `).run('admin', hashPassword('admin123'));
-        console.log('Admin account created: admin / admin123');
-    }
+    const adminPassword = process.env.ADMIN_PASSWORD;
+
+if (!adminPassword || adminPassword.length < 12) {
+    throw new Error('ADMIN_PASSWORD must have at least 12 characters');
+}
+
+const adminHash = hashPassword(adminPassword);
+const adminExists = db.prepare(
+    'SELECT id FROM users WHERE username = ?'
+).get('admin');
+
+if (adminExists) {
+    db.prepare(
+        "UPDATE users SET password = ?, role = 'admin', token = NULL, token_expires_at = NULL WHERE username = 'admin'"
+    ).run(adminHash);
+} else {
+    db.prepare(`
+        INSERT INTO users (username, password, role, email, created_at)
+        VALUES (?, ?, 'admin', 'admin@chainbattery.local', datetime('now','localtime'))
+    `).run('admin', adminHash);
+}
 
     console.log('Database initialized at:', DB_PATH);
     db.close();
