@@ -100,7 +100,7 @@ router.get('/me', (req, res) => {
         return res.status(401).json({ error: '未登录' });
     }
 
-    const user = db.prepare('SELECT id, username, email, role, created_at, last_login_at FROM users WHERE token = ?').get(token);
+    const user = db.prepare('SELECT id, username, email, role, created_at, last_login_at FROM users WHERE token = ? AND token_expires_at > datetime('now')').get(token);
     if (!user) {
         return res.status(401).json({ error: '登录已过期，请重新登录' });
     }
@@ -113,7 +113,7 @@ function authRequired(req, res, next) {
     if (!token) {
         return res.status(401).json({ error: '未登录' });
     }
-    const user = db.prepare('SELECT * FROM users WHERE token = ?').get(token);
+    const user = db.prepare('SELECT * FROM users WHERE token = ? AND token_expires_at > datetime('now')').get(token);
     if (!user) {
         return res.status(401).json({ error: '登录已过期，请重新登录' });
     }
@@ -126,7 +126,7 @@ function adminRequired(req, res, next) {
     if (!token) {
         return res.status(401).json({ error: '未登录' });
     }
-    const user = db.prepare('SELECT * FROM users WHERE token = ?').get(token);
+    const user = db.prepare('SELECT * FROM users WHERE token = ? AND token_expires_at > datetime('now')').get(token);
     if (!user) {
         return res.status(401).json({ error: '登录已过期，请重新登录' });
     }
