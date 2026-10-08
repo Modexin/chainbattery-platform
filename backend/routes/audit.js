@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db/conn');
+const { adminRequired } = require('./auth');
 
 // GET /api/audit - 获取审计日志（支持筛选）
 router.get('/', (req, res) => {
@@ -54,7 +55,7 @@ router.get('/stats', (req, res) => {
 });
 
 // POST /api/audit - 手动添加审计日志
-router.post('/', (req, res) => {
+router.post('/', adminRequired, (req, res) => {
     const { operator, action, target_type, target_id, detail, ip_address } = req.body;
     if (!operator || !action) {
         return res.status(400).json({ error: '缺少必填字段' });
